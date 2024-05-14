@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery - Chaska Restaurant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .header {
+            background-color: #ff6f61;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #ff6f61;
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e05244;
+        }
+
+        .cart {
+            margin-top: 20px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .cart h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .cart-items {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .cart-items li {
+            margin-bottom: 10px;
+        }
+
+        .cart-total {
+            font-weight: bold;
+        }
+
+        .delivery-status {
+            margin-top: 20px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .delivery-status h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .delivery-status p {
+            margin: 0;
+        }
+
+        .delivery-status p span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Delivery</h1>
+    </div>
+
+    <div class="container">
+        <form id="orderForm">
+            <label for="menuItems">Menu Items:</label>
+            <select id="menuItems" name="menuItems" multiple required>
+                <!-- Menu items will be populated dynamically from menu.html -->
+            </select>
+            <label for="deliveryAddress">Delivery Address:</label>
+            <input type="text" id="deliveryAddress" name="deliveryAddress" required>
+            <label for="paymentMethod">Payment Method:</label>
+            <select id="paymentMethod" name="paymentMethod" required>
+                <option value="credit">Credit Card</option>
+                <option value="debit">Debit Card</option>
+                <option value="paypal">PayPal</option>
+                <!-- Add more payment methods as needed -->
+            </select>
+            <button type="submit">Place Order</button>
+        </form>
+
+        <div class="cart" id="cart">
+            <h2>Cart</h2>
+            <ul class="cart-items" id="cartItems"></ul>
+            <p class="cart-total" id="cartTotal">Total: $0.00</p>
+        </div>
+
+        <div class="delivery-status" id="deliveryStatus">
+            <h2>Delivery Status</h2>
+            <p>Your order is <span id="status">pending</span>.</p>
+            <p>Estimated delivery time: <span id="deliveryTime">30 minutes</span>.</p>
+        </div>
+    </div>
+
+    <script>
+        // Load menu items from menu.html
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const menuItems = doc.querySelectorAll('.menu-item');
+                const select = document.getElementById('menuItems');
+                menuItems.forEach(item => {
+                    const option = document.createElement('option');
+                    option.value = item.textContent;
+                    option.textContent = item.textContent;
+                    select.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error loading menu:', error));
+
+        // Submit order form
+        document.getElementById('orderForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const selectedItems = Array.from(document.getElementById('menuItems').selectedOptions).map(option => option.value);
+            const deliveryAddress = document.getElementById('deliveryAddress').value;
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            const cartItemsList = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const deliveryStatus = document.getElementById('deliveryStatus');
+
+            // Update cart
+            cartItemsList.innerHTML = '';
+            selectedItems.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                cartItemsList.appendChild(li);
+            });
+
+            // Calculate total
+            const total = selectedItems.length * 10; // Assuming each item costs $10
+            cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+
+            // Simulate order status update
+            setTimeout(() => {
+                deliveryStatus.innerHTML = `
+                    <h2>Delivery Status</h2>
+                    <p>Your order is <span id="status">on its way</span>.</p>
+                    <p>Estimated delivery time: <span id="deliveryTime">15 minutes</span>.</p>
+                `;
+            }, 3000); // Simulate a delay of 3 seconds
+        });
+    </script>
+</body>
+
+</html>

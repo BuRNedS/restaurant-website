@@ -1,0 +1,173 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+
+body {
+  font-family: sans-serif;
+  background-color: #F7DCB9;
+
+}
+
+
+.container{
+  max-width: 1500px;
+  padding: 0px;
+}
+
+.container_item1{
+  margin-top: -48px;
+}
+
+.container_item1 h1{
+  padding: 70px 0 20px 0;
+  font-family: "Style Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+  
+}
+.container_item1 p{
+  color: white;
+  padding-bottom: 70px;
+  font-size: medium;
+  color:antiquewhite;
+
+}
+
+.container_item2{
+  margin-top: -16px;
+  background-image: url(img/reservation.png);
+}
+
+.container_item2{
+  margin-top: -16px;
+  background-image: url(img/chaska_bg.png);
+}
+
+.container_item2 h1{
+  padding: 70px 0 20px 0;
+  font-family: "Style Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+  
+}
+
+.container_item2 p{
+  color: white;
+  padding-bottom: 70px;
+  font-size: medium;
+}
+
+.container_item3{
+  width: 200px
+  margin-top: -16px;
+  padding-bottom: 70px;
+}
+
+.container_item3 h1{
+  font-family: "Style Script", cursive;
+    font-weight: 400;
+    font-style: normal; 
+}
+
+.container_item3 p{
+  color: white;
+  padding-bottom: 70px;
+  font-size: medium;
+}
+
+.icon>a{
+    color: rgb(37, 12, 1);;
+    text-decoration: underline;
+}
+
+.icon>a:hover{
+   color: blue;
+}
+
+.nav {
+  background-color: #AF8260;
+  height: min-content;
+  display: flex;
+  justify-content: space-between;
+  margin: 0px;
+  position: fixed;
+  z-index: 1;
+  opacity: 0.8;
+  font-size: medium;
+  width: 100%;
+}
+.btnContainer{
+  height: min-content;
+  display: flex;
+  gap: 25px;
+  justify-content: space-between;
+  margin: 80px 184px 80px 80px;
+  border: 0px;
+  background-color: #AF8260;
+}
+.btn{
+  border: none;
+  background-color: #AF8260;
+  color: white;
+}
+.btnWithBG{
+  border-radius: 5px;
+  background-color: #803D3B;
+  color: white;
+  border: 1px solid rgb(37, 12, 1) ;
+}
+
+
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.logo{
+  width: 12%;
+  height: auto;
+  object-fit: contain;
+  /*mix-blend-mode: color-burn;*/
+  margin: 27px 10px;
+}
+
+.footer{
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  position: fixed;
+}
+
+
+
+
+a.navbar-brand {
+    font-size: medium;
+}
+.fa-brands, .fab {
+  font-size: 30px;
+}
+
+.icon{
+  display: flex;
+  justify-content: left;
+  gap: 20px;
+  width: 50%;
+  margin-left: 35px;
+}
+.more{
+  display: flex;
+  justify-content: right;
+  gap: 22px;
+  width: 50%;
+  font-weight: 50;
+  margin-right: 25px;
+  color: white;
+}
+
+.btnWithBG{
+  padding: 5px;
+}

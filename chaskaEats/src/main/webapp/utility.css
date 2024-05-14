@@ -1,0 +1,23 @@
+h1 {
+    font-size: 3.5em;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  
+  p {
+    font-size: 1.25em;
+    font-weight: 300;
+    color: white;
+    text-align: center;
+  }
+
+  /* paragraph default codeclass "lead"
+  h1ka deafult codeclass "display-4" */
+
+.brownLight1{
+    background-color: #AF8260;
+}
+
+.brownDark{
+    background-color: #803D3B;
+}
